@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - MyStore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MyStore</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="cart.html">Cart (<span class="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products">
+            <h2>All Products</h2>
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="running">Running Shoes</button>
+                <button class="filter-btn" data-filter="fashion">Fashionable Shoes</button>
+                <button class="filter-btn" data-filter="casual">Casual Shoes</button>
+            </div>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="running">
+                    <img src="\ps1\shoe image\sport shoe.jpg" alt="Red Sport Shoes">
+                    <h3>Sport Running Shoes</h3>
+                    <p>₹1,499</p>
+                    <button>Add to Cart</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card" data-category="fashion">
+                    <img src="\ps1\shoe image\classic sneakers.jpg" alt="White Sneakers">
+                    <h3>Classic Sneakers</h3>
+                    <p>₹2,999</p>
+                    <button>Add to Cart</button>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card" data-category="casual">
+                    <img src="\ps1\shoe image\casual comfort.jpg" alt="Casual Shoes">
+                    <h3>Casual Comfort Shoes</h3>
+                    <p>₹3,999</p>
+                    <button>Add to Cart</button>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card" data-category="fashion">
+                    <img src="\ps1\shoe image\fashion sneakers.jpg" alt="Fashion Sneakers">
+                    <h3>Fashion Sneakers</h3>
+                    <p>₹2,099</p>
+                    <button>Add to Cart</button>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-card" data-category="casual">
+                    <img src="\ps1\shoe image\casual shoe.png" alt="Casual Shoes">
+                    <h3>Fashion Sneakers</h3>
+                    <p>₹3,399</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MyStore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    // Show/Hide products based on filter
+                    productCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
